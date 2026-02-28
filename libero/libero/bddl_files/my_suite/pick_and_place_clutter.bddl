@@ -1,0 +1,58 @@
+(define (problem pick_and_place_clutter)
+  (:domain robosuite)
+  (:language Pick and place the target object among clutter)
+
+  (:regions
+    ;; Cluttered workspace with multiple objects
+    (clutter_region
+      (:target floor)
+      (:ranges (
+        (-0.15 -0.15 0.05 0.05)
+      ))
+    )
+    ;; Target placement region (clear area)
+    (target_region
+      (:target floor)
+      (:ranges (
+        (0.15 0.0 0.25 0.1)
+      ))
+    )
+    ;; Distractor positions
+    (distractor_region_1
+      (:target floor)
+      (:ranges (
+        (-0.1 0.05 -0.05 0.1)
+      ))
+    )
+    (distractor_region_2
+      (:target floor)
+      (:ranges (
+        (0.0 -0.1 0.05 -0.05)
+      ))
+    )
+  )
+
+  (:fixtures
+    floor - floor
+  )
+
+  (:objects
+    block_1 - block
+    block_2 - block
+    block_3 - block
+  )
+
+  (:obj_of_interest
+    block_1
+  )
+
+  (:init
+    (On block_1 floor_clutter_region)
+    (On block_2 floor_distractor_region_1)
+    (On block_3 floor_distractor_region_2)
+  )
+
+  (:goal
+    (And (On block_1 floor_target_region))
+  )
+)

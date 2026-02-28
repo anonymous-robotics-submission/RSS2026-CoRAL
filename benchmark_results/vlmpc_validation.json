@@ -1,0 +1,35 @@
+{
+  "method": "VLMPC",
+  "results": {
+    "T1": {
+      "name": "Push+Pick Board",
+      "success_rate": "4/10",
+      "successes": 4,
+      "mean_time": 1.6463112831115723
+    },
+    "T2": {
+      "name": "Pick+Place Box",
+      "success_rate": "9/10",
+      "successes": 9,
+      "mean_time": 1.6575868924458823
+    },
+    "T3": {
+      "name": "Pick+Place Clutter",
+      "success_rate": "7/10",
+      "successes": 7,
+      "mean_time": 1.563319138118199
+    },
+    "T4": {
+      "name": "Push Const. Force",
+      "success_rate": "1/10",
+      "successes": 1,
+      "mean_time": 1.6781973838806152
+    },
+    "T5": {
+      "name": "Flip Box",
+      "success_rate": "4/10",
+      "successes": 4,
+      "mean_time": 1.7642998695373535
+    }
+  }
+}

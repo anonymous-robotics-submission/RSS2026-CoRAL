@@ -1,0 +1,52 @@
+(define (problem push_with_constant_force)
+  (:domain robosuite)
+  (:language Push the object with constant applied force to the target)
+
+  (:regions
+    ;; Initial object position
+    (object_start_region
+      (:target floor)
+      (:ranges (
+        (-0.1 -0.05 0.0 0.05)
+      ))
+    )
+    ;; Target position after pushing
+    (push_target_region
+      (:target floor)
+      (:ranges (
+        (0.15 -0.05 0.25 0.05)
+      ))
+    )
+    ;; Obstacle/constraint region (must maintain force through this)
+    (force_constraint_region
+      (:target floor)
+      (:ranges (
+        (0.05 -0.05 0.1 0.05)
+      ))
+    )
+  )
+
+  (:fixtures
+    floor - floor
+  )
+
+  (:objects
+    block_1 - block
+  )
+
+  (:obj_of_interest
+    block_1
+  )
+
+  (:init
+    (On block_1 floor_object_start_region)
+  )
+
+  ;; Goal: Object reaches target while maintaining constant force contact
+  (:goal
+    (And
+      (On block_1 floor_push_target_region)
+      (ConstantForceApplied block_1)
+    )
+  )
+)

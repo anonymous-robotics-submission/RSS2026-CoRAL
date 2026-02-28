@@ -1,0 +1,41 @@
+(define (problem pick_and_place_box)
+  (:domain robosuite)
+  (:language Pick up the box and place it in the target location)
+
+  (:regions
+    ;; Initial box position
+    (box_start_region
+      (:target floor)
+      (:ranges (
+        (-0.1 -0.1 0.0 0.0)
+      ))
+    )
+    ;; Target placement region
+    (box_target_region
+      (:target floor)
+      (:ranges (
+        (0.1 0.1 0.2 0.2)
+      ))
+    )
+  )
+
+  (:fixtures
+    floor - floor
+  )
+
+  (:objects
+    block_1 - block
+  )
+
+  (:obj_of_interest
+    block_1
+  )
+
+  (:init
+    (On block_1 floor_box_start_region)
+  )
+
+  (:goal
+    (And (On block_1 floor_box_target_region))
+  )
+)
